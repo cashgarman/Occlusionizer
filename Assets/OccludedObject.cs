@@ -6,6 +6,7 @@ public class OccludedObject : MonoBehaviour
 
     void Start()
     {
+        VisibilityCalculator.AddObject(this, color);
         GetComponent<MeshRenderer>().material.color = color;
     }
 }

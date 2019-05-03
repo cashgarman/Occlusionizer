@@ -7,6 +7,6 @@ public class OcculsionCamera : MonoBehaviour
     void Start()
     {
 //        GetComponent<Camera>().SetReplacementShader(occulsionShader, "occlusion");
-        GetComponent<Camera>().depthTextureMode = DepthTextureMode.Depth;
+//        GetComponent<Camera>().depthTextureMode = DepthTextureMode.Depth;
     }
 }
