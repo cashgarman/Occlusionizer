@@ -1,0 +1,17 @@
+﻿#pragma kernel CountVisiblePixels
+
+#define THREADS 32
+
+Texture2D<float4> occludedBuffer;
+RWStructuredBuffer<int> numPixels;
+
+[numthreads(THREADS, THREADS, 1)]
+void CountVisiblePixels(uint3 dispatchID : SV_DispatchThreadID)
+{
+    if(occludedBuffer[dispatchID.xy].x != 0)
+    {
+        uint id = dispatchID.x + dispatchID.y * THREADS * THREADS;
+        int count = numPixels.IncrementCounter();
+        numPixels[id] = count;
+    }
+}
